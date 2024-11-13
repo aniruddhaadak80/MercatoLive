@@ -80,3 +80,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.text-glow {
+  color: #fff;
+  animation: float 3s ease-in-out infinite;
+  text-shadow: 0 0 10px #00e0ff, 0 0 20px #00e0ff, 0 0 30px #00e0ff;
+}
+
+.text-highlight-glow {
+  color: #ff8a00;
+  font-weight: bold;
+  text-shadow: 0 0 5px #ff8a00, 0 0 10px #ff8a00;
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-fadeIn { animation: fadeIn 1.5s ease-in-out forwards; }
+.animate-fadeInUp { animation: fadeInUp 1.5s ease-in-out forwards; }
+.animate-slideInLeft { animation: slideInLeft 1.5s ease-in-out forwards; }
+.animate-slideInRight { animation: slideInRight 1.5s ease-in-out forwards; }
+
