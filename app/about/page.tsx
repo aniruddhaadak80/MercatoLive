@@ -17,8 +17,8 @@ export default function AboutPage() {
         <div className="prose prose-neutral dark:prose-invert max-w-none space-y-6">
           <p className="animate-fadeInUp">
             <span className="text-highlight-glow">MercatoLive</span> was founded with a simple yet powerful vision: to create a shopping
-            experience that's truly real-time and transparent. We believe that shoppers
-            should always know exactly what's available, when it's available, and be able
+            experience that&apos;s truly real-time and transparent. We believe that shoppers
+            should always know exactly what&apos;s available, when it&apos;s available, and be able
             to make informed decisions instantly.
           </p>
 
