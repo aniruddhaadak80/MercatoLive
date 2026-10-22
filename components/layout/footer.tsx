@@ -23,7 +23,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/categories">All Categories</Link></li>
               <li><Link href="/deals">Deals</Link></li>
-              <li><Link href="/new">What's New</Link></li>
+              <li><Link href="/new">What&apos;s New</Link></li>
               <li><Link href="/trending">Trending</Link></li>
             </ul>
           </div>
