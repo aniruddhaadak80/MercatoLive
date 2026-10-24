@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,16 +9,18 @@ import { ShoppingCart, Package } from 'lucide-react';
 import ProductCard from '@/components/shop/product-card';
 import { products } from '@/lib/data/products';
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || 'all');
+  const categoryParam = searchParams.get('category') ?? 'all';
+  const [selectedCategory, setSelectedCategory] = useState(categoryParam);
+  const [syncedParam, setSyncedParam] = useState(categoryParam);
 
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-    }
-  }, [categoryParam]);
+  // Adjust local selection during render when the ?category= query changes,
+  // instead of syncing it from an effect.
+  if (categoryParam !== syncedParam) {
+    setSyncedParam(categoryParam);
+    setSelectedCategory(categoryParam);
+  }
 
   const categories = ['all', 'electronics', 'clothing', 'books', 'home'];
 
@@ -52,5 +54,13 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={<div className="container py-8" />}>
+      <ShopContent />
+    </Suspense>
   );
 }

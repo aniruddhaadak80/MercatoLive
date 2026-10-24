@@ -111,6 +111,10 @@ const Carousel = React.forwardRef<
         return;
       }
 
+      // Emit the initial selection to the consumer. This effect subscribes to an
+      // external system (Embla) and mirrors its state up, so the usual
+      // "don't set state in an effect" guidance does not apply here.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       onSelect(api);
       api.on('reInit', onSelect);
       api.on('select', onSelect);
